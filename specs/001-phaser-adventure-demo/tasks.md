@@ -36,9 +36,9 @@ tests/
 
 **Purpose**: Project initialization and basic structure
 
-- [ ] T001 Create project structure (`src/`, `src/scenes/`, `src/svg/`, `src/utils/`, `src/ui/`, `tests/sanity/`)
-- [ ] T002 Initialize Vite + JavaScript project with Phaser dependency and npm scripts (`dev`, `build`, `preview`) in `package.json`
-- [ ] T003 [P] Add initial Vite entry stubs `src/main.js` and `src/scenes/MainScene.js` (imports Phaser, exports empty scene class)
+- [X] T001 Create project structure (`src/`, `src/scenes/`, `src/svg/`, `src/utils/`, `src/ui/`, `tests/sanity/`)
+- [X] T002 Initialize Vite + JavaScript project with Phaser dependency and npm scripts (`dev`, `build`, `preview`) in `package.json`
+- [X] T003 [P] Add initial Vite entry stubs `src/main.js` and `src/scenes/MainScene.js` (imports Phaser, exports empty scene class)
 
 ---
 
@@ -48,13 +48,13 @@ tests/
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-- [ ] T004 Configure base Phaser game (800×600, Arcade physics, scene registration) in `src/main.js`
-- [ ] T005 [P] Implement SVG-to-data-URI helper in `src/utils/svg.js`
-- [ ] T006 [P] Create base room visuals: floor and wall SVG modules in `src/svg/floor.js` and `src/svg/wall.js`
-- [ ] T007 [P] Preload/register floor and wall textures using the data URI helper in `src/scenes/MainScene.js`
-- [ ] T008 Define room layout, wall collisions, and spawn points in `src/scenes/MainScene.js`
-- [ ] T009 Wire keyboard input (WASD/arrow movement, interact key E/Space) and store controls references in `src/scenes/MainScene.js`
-- [ ] T010 Document npm scripts and sanity-check steps in `README.md` and add a placeholder `npm run test:sanity` entry in `package.json`
+- [X] T004 Configure base Phaser game (800×600, Arcade physics, scene registration) in `src/main.js`
+- [X] T005 [P] Implement SVG-to-data-URI helper in `src/utils/svg.js`
+- [X] T006 [P] Create base room visuals: floor and wall SVG modules in `src/svg/floor.js` and `src/svg/wall.js`
+- [X] T007 [P] Preload/register floor and wall textures using the data URI helper in `src/scenes/MainScene.js`
+- [X] T008 Define room layout, wall collisions, and spawn points in `src/scenes/MainScene.js`
+- [X] T009 Wire keyboard input (WASD/arrow movement, interact key E/Space) and store controls references in `src/scenes/MainScene.js`
+- [X] T010 Document npm scripts and sanity-check steps in `README.md` and add a placeholder `npm run test:sanity` entry in `package.json`
 
 **Checkpoint**: Foundation ready - user story implementation can now begin in parallel
 
@@ -68,15 +68,15 @@ tests/
 
 ### Tests for User Story 1 (lightweight sanity)
 
-- [ ] T011 [P] [US1] Add boot/movement sanity check scaffold in `tests/sanity/boot.test.js`
+- [X] T011 [P] [US1] Add boot/movement sanity check scaffold in `tests/sanity/boot.test.js`
 
 ### Implementation for User Story 1
 
-- [ ] T012 [P] [US1] Create player SVG asset module in `src/svg/player.js`
-- [ ] T013 [P] [US1] Register player texture from data URI and load in `src/scenes/MainScene.js`
-- [ ] T014 [US1] Spawn player with Arcade physics body and collision bounds in `src/scenes/MainScene.js`
-- [ ] T015 [US1] Implement movement update (WASD/arrow input, velocity handling) in `src/scenes/MainScene.js`
-- [ ] T016 [US1] Add controls hint UI text via `src/ui/hud.js` and display from `src/scenes/MainScene.js`
+- [X] T012 [P] [US1] Create player SVG asset module in `src/svg/player.js`
+- [X] T013 [P] [US1] Register player texture from data URI and load in `src/scenes/MainScene.js`
+- [X] T014 [US1] Spawn player with Arcade physics body and collision bounds in `src/scenes/MainScene.js`
+- [X] T015 [US1] Implement movement update (WASD/arrow input, velocity handling) in `src/scenes/MainScene.js`
+- [X] T016 [US1] Add controls hint UI text via `src/ui/hud.js` and display from `src/scenes/MainScene.js`
 
 **Checkpoint**: At this point, User Story 1 should be fully functional and testable independently
 
@@ -90,15 +90,15 @@ tests/
 
 ### Tests for User Story 2 (lightweight sanity)
 
-- [ ] T017 [P] [US2] Add dialog interaction sanity check in `tests/sanity/dialog.test.js`
+- [X] T017 [P] [US2] Add dialog interaction sanity check in `tests/sanity/dialog.test.js`
 
 ### Implementation for User Story 2
 
-- [ ] T018 [P] [US2] Create NPC SVG asset module in `src/svg/npc.js`
-- [ ] T019 [P] [US2] Register NPC texture and preload in `src/scenes/MainScene.js`
-- [ ] T020 [US2] Place NPC with overlap radius for interaction in `src/scenes/MainScene.js`
-- [ ] T021 [P] [US2] Implement dialog UI helper (show/hide text) in `src/ui/dialog.js`
-- [ ] T022 [US2] Wire interact key to open/close NPC dialog and pause/resume movement in `src/scenes/MainScene.js`
+- [X] T018 [P] [US2] Create NPC SVG asset module in `src/svg/npc.js`
+- [X] T019 [P] [US2] Register NPC texture and preload in `src/scenes/MainScene.js`
+- [X] T020 [US2] Place NPC with overlap radius for interaction in `src/scenes/MainScene.js`
+- [X] T021 [P] [US2] Implement dialog UI helper (show/hide text) in `src/ui/dialog.js`
+- [X] T022 [US2] Wire interact key to open/close NPC dialog and pause/resume movement in `src/scenes/MainScene.js`
 
 **Checkpoint**: At this point, User Stories 1 AND 2 should both work independently
 
@@ -112,14 +112,14 @@ tests/
 
 ### Tests for User Story 3 (lightweight sanity)
 
-- [ ] T023 [P] [US3] Add collection sanity check in `tests/sanity/collect.test.js`
+- [X] T023 [P] [US3] Add collection sanity check in `tests/sanity/collect.test.js`
 
 ### Implementation for User Story 3
 
-- [ ] T024 [P] [US3] Create interactive object SVG asset module (e.g., chest/tile) in `src/svg/object.js`
-- [ ] T025 [P] [US3] Register object texture and add to scene with overlap detection in `src/scenes/MainScene.js`
-- [ ] T026 [US3] Implement collected state change (color/hide) and prevent duplicate rewards in `src/scenes/MainScene.js`
-- [ ] T027 [US3] Show “You found a thing!” feedback (reuse dialog UI) and clear dialog on dismiss in `src/scenes/MainScene.js`
+- [X] T024 [P] [US3] Create interactive object SVG asset module (e.g., chest/tile) in `src/svg/object.js`
+- [X] T025 [P] [US3] Register object texture and add to scene with overlap detection in `src/scenes/MainScene.js`
+- [X] T026 [US3] Implement collected state change (color/hide) and prevent duplicate rewards in `src/scenes/MainScene.js`
+- [X] T027 [US3] Show “You found a thing!” feedback (reuse dialog UI) and clear dialog on dismiss in `src/scenes/MainScene.js`
 
 **Checkpoint**: All user stories should now be independently functional
 
@@ -129,9 +129,9 @@ tests/
 
 **Purpose**: Improvements that affect multiple user stories
 
-- [ ] T028 [P] Update `README.md` with prerequisites, controls, NPC/dialog/collectible behaviors, and sanity steps
-- [ ] T029 Code cleanup and dependency audit to keep bundle minimal
-- [ ] T030 [P] Validate quickstart and sanity flow (`npm run dev`, sanity checks) per `quickstart.md`
+- [X] T028 [P] Update `README.md` with prerequisites, controls, NPC/dialog/collectible behaviors, and sanity steps
+- [X] T029 Code cleanup and dependency audit to keep bundle minimal
+- [X] T030 [P] Validate quickstart and sanity flow (`npm run dev`, sanity checks) per `quickstart.md`
 
 ---
 
