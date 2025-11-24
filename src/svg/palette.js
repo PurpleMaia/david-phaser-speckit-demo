@@ -1,28 +1,28 @@
 // Central color palette capped at 16 distinct values (includes darker pairs and shadow)
 export const colors = {
   // Characters (player and NPC share skin tones to stay within 16-color limit)
-  playerSkin: '#FFDBAC',
-  playerSkinDark: '#D4A574',
-  playerShirt: '#4A90E2',
-  playerShirtDark: '#2E5A8E',
-  playerPants: '#8B7355', // Reused for walls/props to limit palette size
-  playerPantsDark: '#5D4C3A',
+  playerSkin: '#F4D9B0',
+  playerSkinDark: '#D9B178',
+  playerShirt: '#3E95D4',
+  playerShirtDark: '#2E6FA5',
+  playerPants: '#C1A178', // Reused for walls/props to limit palette size
+  playerPantsDark: '#8C6A44',
 
   // NPC robe and shared doorway accent
-  npcRobe: '#9B59B6',
-  npcRobeDark: '#6C3483',
+  npcRobe: '#9A65C6',
+  npcRobeDark: '#6E4791',
 
   // Environment
-  floorBase: '#D2B48C',
-  floorAlt: '#C9A57B',
-  wallBase: '#8B7355',
-  wallDark: '#5D4C3A',
-  doorway: '#9B59B6', // Shares value with npcRobe to stay within color budget
+  floorBase: '#2E2E2E',
+  floorAlt: '#353535',
+  wallBase: '#9B7A53',
+  wallDark: '#6E5236',
+  doorway: '#2A2A2A', // Door opening color
 
   // Interactive object
-  chestBase: '#D4AF37',
-  chestDark: '#9B7F2A',
-  chestGlow: '#D4AF37', // Glow uses same hue with opacity in SVG for brightness
+  chestBase: '#F2C94C',
+  chestDark: '#C99A2B',
+  chestGlow: '#F2C94C', // Glow uses same hue with opacity in SVG for brightness
 
   // Decorative props and UI
   plantGreen: '#7CB342',
