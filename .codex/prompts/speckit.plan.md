@@ -13,61 +13,7 @@ handoffs:
 ## User Input
 
 ```text
-Implementation plan:
-Use Vite + Javascript for the frontend tooling and dev server.
-
-
-Use Phaser 3 as the game engine, following their recommended modern bundler setup.
-
-
-Organize code into:
-
-
-src/main.js – app entry + Phaser game config.
-
-
-src/scenes/ – at least one MainScene that sets up the map, player, NPC, and interactive object.
-
-
-src/svg/ – functions or constants that generate SVG strings for each asset (player, NPC, chest, floor tile, wall tile, etc).
-
-
-For SVG → Phaser integration:
-
-
-Create a small utility that turns an SVG string into a data URI.
-
-
-Use Phaser’s loader to register those as textures at runtime, then create sprites from those textures.
-
-
-Keep dependencies minimal: only Phaser, Vite, Javascript, and any tiny helper packages that are truly necessary.
-
-
-Add npm scripts for:
-
-
-dev – run Vite dev server.
-
-
-build – production build.
-
-
-preview – preview build if convenient.
-
-
-Add a short README.md explaining:
-
-
-Prerequisites.
-
-
-How to run the dev server.
-
-
-What the game currently does.
-
-
+$ARGUMENTS
 ```
 
 You **MUST** consider the user input before proceeding (if not empty).

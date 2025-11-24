@@ -1,11 +1,24 @@
 <!--
 Sync Impact Report
-- Version change: N/A → 1.0.0
+- Version: 1.0.0 → 1.1.0 (Visual Style Guide Added)
 - Modified principles: Defined core principles (Minimal Proof-of-Concept Scope; Phaser-First Local Frontend; Code-Generated SVG Assets Only; Simplicity Over Dependencies; Lightweight Quality & Clarity)
-- Added sections: Delivery Constraints & Scope Limits; Development Workflow & Quality Gates
-- Removed sections: None
-- Templates requiring updates: ✅ .specify/templates/plan-template.md; ✅ .specify/templates/spec-template.md; ✅ .specify/templates/tasks-template.md
-- Follow-up TODOs: None
+- Added sections:
+- Visual Style Guide (Phase 2: Visual Polish) as subsection under Principle III
+
+Files Updated:
+- ✅ .specify/memory/constitution.md (this file)
+- ⏳ .specify/templates/spec-template.md (should update Visual Assets section to reference style guide)
+- ⏳ .specify/templates/plan-template.md (Constitution Check should verify visual style compliance)
+
+Modified Principles:
+- Principle III expanded with detailed visual design constraints and implementation approach
+- Added guidance for "simple but charming" aesthetic (early Zelda/SNES vibes)
+- Specified color palette limits (10-16 colors), shading constraints (one darker shade per base color)
+- Emphasized parametric, reusable SVG generators over one-off drawings
+
+Follow-up TODOs:
+- Consider updating spec template to reference new visual style constraints
+- Consider updating plan template Constitution Check to include visual style verification
 -->
 
 # david-phaser-speckit-demo Constitution
@@ -27,6 +40,7 @@ Sync Impact Report
 - All visual assets are defined as SVG strings (inline or exported from `.js` modules) and loaded via data URIs (or equivalent) into Phaser; no bitmap/raster assets or external art files.
 - Art style stays extremely simple (colored shapes, icons) with no attempt at polish.
 - Rationale: Keeps assets lightweight, inspectable, and versionable in code.
+
 
 ### Simplicity Over Dependencies
 - Favor small, readable implementations using built-in capabilities and Phaser utilities; add third-party libraries only when strictly necessary.
@@ -58,4 +72,21 @@ Sync Impact Report
 - Versioning follows semantic rules: MAJOR for breaking or removed principles, MINOR for new/expanded principles or sections, PATCH for clarifications.
 - Compliance is reviewed during planning, specification, and code review; deviations must be justified and approved before implementation.
 
-**Version**: 1.0.0 | **Ratified**: 2025-11-24 | **Last Amended**: 2025-11-24
+#### Visual Style Guide (Phase 2: Visual Polish)
+
+Target aesthetic: **"simple but charming"** — early Zelda/SNES vibes with modern clarity.
+
+**Design Constraints:**
+- **Clean silhouettes**: Player, NPCs, and environment elements MUST have clear, readable shapes
+- **Color contrast**: Player, NPCs, and environment MUST be visually distinct through color choices
+- **Tiny color palette**: Use 10–16 total colors maximum across the entire game
+- **Soft outlines and simple shading**: Each base color gets ONE darker shade for depth (no gradients, no complex lighting)
+
+**Implementation Approach:**
+- **Prefer parametric, reusable SVG generators** over one-off drawings
+  - Example: `createCharacterSvg({ bodyColor, accessoryColor, emotion })`
+  - This aligns with code-first asset generation and reduces duplication
+- **Mechanics and code clarity still beat visual effects**: Don't add particle systems, animations, or effects that complicate the codebase unless they serve gameplay
+- Visual polish MUST NOT compromise Simplicity First Principle or Minimal Dependencies Principle
+
+**Version**: 1.1.0 | **Ratified**: 2025-11-24 | **Last Amended**: 2025-11-24

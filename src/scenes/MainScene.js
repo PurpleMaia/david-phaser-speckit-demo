@@ -1,10 +1,10 @@
 import Phaser from 'phaser';
-import { svgToDataUri } from '../utils/svg.js';
-import { floorSvg } from '../svg/floor.js';
-import { wallSvg } from '../svg/wall.js';
-import { playerSvg } from '../svg/player.js';
-import { npcSvg } from '../svg/npc.js';
-import { objectSvg } from '../svg/object.js';
+import { svgToTexture } from '../utils/textureLoader.js';
+import { createFloorTileSvg } from '../svg/sprites/createFloorTileSvg.js';
+import { createWallTileSvg } from '../svg/sprites/createWallTileSvg.js';
+import { createPlayerSvg } from '../svg/sprites/createPlayerSvg.js';
+import { createNpcSvg } from '../svg/sprites/createNpcSvg.js';
+import { createChestSvg } from '../svg/sprites/createChestSvg.js';
 import { createDialog } from '../ui/dialog.js';
 import { createHud } from '../ui/hud.js';
 
@@ -18,12 +18,7 @@ export class MainScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.svg('floor-tile', svgToDataUri(floorSvg()), { width: 64, height: 64 });
-    this.load.svg('wall-tile', svgToDataUri(wallSvg()), { width: 64, height: 64 });
-    this.load.svg('player', svgToDataUri(playerSvg()), { width: 32, height: 32 });
-    this.load.svg('npc', svgToDataUri(npcSvg()), { width: 32, height: 32 });
-    this.load.svg('object', svgToDataUri(objectSvg(false)), { width: 32, height: 24 });
-    this.load.svg('object-collected', svgToDataUri(objectSvg(true)), { width: 32, height: 24 });
+    this.registerTextures();
   }
 
   create() {
@@ -31,7 +26,7 @@ export class MainScene extends Phaser.Scene {
     this.setupInput();
     this.createPlayer();
     this.createNpc();
-    this.createCollectible();
+    this.createChest();
     this.createHud();
 
     // Expose scene for smoke tests
@@ -45,6 +40,16 @@ export class MainScene extends Phaser.Scene {
     this.updateMovement();
   }
 
+  registerTextures() {
+    svgToTexture(this, 'floor-0', createFloorTileSvg({ variant: 0 }), 64, 64);
+    svgToTexture(this, 'wall-solid', createWallTileSvg({ type: 'solid' }), 64, 64);
+    svgToTexture(this, 'wall-doorway', createWallTileSvg({ type: 'doorway' }), 64, 64);
+    svgToTexture(this, 'player', createPlayerSvg(), 32, 32);
+    svgToTexture(this, 'npc', createNpcSvg(), 32, 32);
+    svgToTexture(this, 'chest', createChestSvg({ state: 'closed' }), 32, 24);
+    svgToTexture(this, 'chest-collected', createChestSvg({ state: 'collected' }), 32, 24);
+  }
+
   createRoom() {
     const tileSize = 64;
     const cols = Math.ceil(this.scale.width / tileSize);
@@ -53,18 +58,18 @@ export class MainScene extends Phaser.Scene {
     // floor fill
     for (let y = 0; y < rows; y += 1) {
       for (let x = 0; x < cols; x += 1) {
-        this.add.image(x * tileSize + tileSize / 2, y * tileSize + tileSize / 2, 'floor-tile');
+        this.add.image(x * tileSize + tileSize / 2, y * tileSize + tileSize / 2, 'floor-0');
       }
     }
 
     this.walls = this.physics.add.staticGroup();
     const wallThickness = 32;
     // top and bottom
-    this.walls.create(this.scale.width / 2, wallThickness / 2, 'wall-tile').setDisplaySize(this.scale.width, wallThickness).refreshBody();
-    this.walls.create(this.scale.width / 2, this.scale.height - wallThickness / 2, 'wall-tile').setDisplaySize(this.scale.width, wallThickness).refreshBody();
+    this.walls.create(this.scale.width / 2, wallThickness / 2, 'wall-solid').setDisplaySize(this.scale.width, wallThickness).refreshBody();
+    this.walls.create(this.scale.width / 2, this.scale.height - wallThickness / 2, 'wall-solid').setDisplaySize(this.scale.width, wallThickness).refreshBody();
     // left and right
-    this.walls.create(wallThickness / 2, this.scale.height / 2, 'wall-tile').setDisplaySize(wallThickness, this.scale.height).refreshBody();
-    this.walls.create(this.scale.width - wallThickness / 2, this.scale.height / 2, 'wall-tile').setDisplaySize(wallThickness, this.scale.height).refreshBody();
+    this.walls.create(wallThickness / 2, this.scale.height / 2, 'wall-solid').setDisplaySize(wallThickness, this.scale.height).refreshBody();
+    this.walls.create(this.scale.width - wallThickness / 2, this.scale.height / 2, 'wall-solid').setDisplaySize(wallThickness, this.scale.height).refreshBody();
   }
 
   setupInput() {
@@ -97,11 +102,11 @@ export class MainScene extends Phaser.Scene {
     this.npcZone = this.physics.add.staticImage(npcX, npcY, null).setSize(60, 60).refreshBody().setVisible(false);
   }
 
-  createCollectible() {
+  createChest() {
     const objX = 400;
     const objY = 400;
-    this.objectSprite = this.add.sprite(objX, objY, 'object');
-    this.objectZone = this.physics.add.staticImage(objX, objY, null).setSize(50, 50).refreshBody().setVisible(false);
+    this.chestSprite = this.add.sprite(objX, objY, 'chest');
+    this.chestZone = this.physics.add.staticImage(objX, objY, null).setSize(50, 50).refreshBody().setVisible(false);
   }
 
   createHud() {
@@ -133,7 +138,7 @@ export class MainScene extends Phaser.Scene {
     if (interactPressed) {
       if (this.physics.overlap(this.playerSprite, this.npcZone)) {
         this.toggleDialog('Hello there! Nice day for an adventure.');
-      } else if (this.physics.overlap(this.playerSprite, this.objectZone)) {
+      } else if (this.physics.overlap(this.playerSprite, this.chestZone)) {
         this.handleCollect();
       }
     }
@@ -155,7 +160,7 @@ export class MainScene extends Phaser.Scene {
       return;
     }
     this.collected = true;
-    this.objectSprite.setTexture('object-collected');
+    this.chestSprite.setTexture('chest-collected');
     this.toggleDialog('You found a thing!');
   }
 }
