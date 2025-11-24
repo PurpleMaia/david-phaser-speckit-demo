@@ -10,6 +10,7 @@ import { svgToDataUri } from './svg.js';
  */
 export function svgToTexture(scene, key, svgString, width, height) {
   const dataUri = svgToDataUri(svgString);
-  // Phaser will parse the SVG dimensions; width/height are provided for clarity with generators.
-  scene.textures.addBase64(key, dataUri);
+
+  // Queue the SVG data URI through the loader so the texture is ready when the scene starts.
+  scene.load.image({ key, url: dataUri, normalMap: undefined, data: { width, height } });
 }

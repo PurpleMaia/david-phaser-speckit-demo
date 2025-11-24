@@ -12,8 +12,8 @@ export function createFloorTileSvg({ variant = 0 } = {}) {
   return `
   <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
     <rect width="64" height="64" fill="${fill}" />
-    <rect x="6" y="6" width="52" height="52" fill="#FFFFFF" opacity="0.04" />
-    <rect x="12" y="12" width="40" height="40" fill="#000000" opacity="0.08" />
+    <circle cx="48" cy="18" r="8" fill="#FFFFFF" opacity="0.03" />
+    <circle cx="20" cy="46" r="7" fill="#000000" opacity="0.04" />
   </svg>
   `.trim();
 }
