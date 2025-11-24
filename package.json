@@ -7,9 +7,11 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test:sanity": "echo \"Add sanity checks (boot/dialog/collect)\""
+    "test:sanity": "echo \"Manual sanity checks (boot/dialog/collect)\"",
+    "test:smoke": "playwright test tests/smoke"
   },
   "devDependencies": {
+    "@playwright/test": "^1.49.1",
     "vite": "^6.0.0"
   },
   "dependencies": {
