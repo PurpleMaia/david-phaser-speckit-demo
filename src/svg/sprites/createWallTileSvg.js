@@ -11,8 +11,9 @@ export function createWallTileSvg({ type = 'solid' } = {}) {
     return `
     <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
       <rect width="64" height="64" fill="${colors.wallBase}" />
-      <rect x="8" y="8" width="48" height="48" fill="${colors.wallDark}" />
-      <rect x="16" y="12" width="32" height="40" rx="8" fill="${colors.doorway}" />
+      <rect x="4" y="4" width="56" height="56" fill="${colors.wallDark}" rx="6" />
+      <rect x="10" y="10" width="44" height="44" fill="${colors.wallBase}" rx="5" />
+      <rect x="18" y="8" width="28" height="48" rx="10" fill="${colors.doorway}" />
     </svg>
     `.trim();
   }
@@ -20,8 +21,10 @@ export function createWallTileSvg({ type = 'solid' } = {}) {
   return `
   <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
     <rect width="64" height="64" fill="${colors.wallBase}" />
-    <rect x="6" y="6" width="52" height="52" fill="${colors.wallDark}" />
-    <rect x="12" y="12" width="40" height="40" fill="${colors.playerPants}" opacity="0.6" />
+    <rect x="4" y="4" width="56" height="56" rx="6" fill="${colors.wallDark}" />
+    <rect x="8" y="8" width="48" height="48" rx="5" fill="${colors.wallBase}" />
+    <rect x="12" y="12" width="40" height="40" rx="4" fill="${colors.wallDark}" opacity="0.5" />
+    <rect x="28" y="4" width="8" height="56" fill="#FFFFFF" opacity="0.06" />
   </svg>
   `.trim();
 }
