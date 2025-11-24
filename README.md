@@ -11,6 +11,11 @@ npm run dev
 ```
 Open the localhost URL Vite prints (recommended viewport ~800×600).
 
+Automated smoke:
+```bash
+npm run test:smoke
+```
+
 ## What it does
 - Single enclosed room with floor and wall tiles.
 - Player moves with arrow keys or WASD and collides with walls.

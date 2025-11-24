@@ -33,6 +33,12 @@ export class MainScene extends Phaser.Scene {
     this.createNpc();
     this.createCollectible();
     this.createHud();
+
+    // Expose scene for smoke tests
+    if (typeof window !== 'undefined') {
+      window.__scene = this;
+      window.__phaserReady = true;
+    }
   }
 
   update() {
